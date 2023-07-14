@@ -17,8 +17,6 @@ export default function Home() {
   };
   
   const handleGenerateRecipes = async () => {
-    console.log("🚀 ~ file: page.tsx:18 ~ Home ~ products:", products)
-    
     try {
       const recipes = await getRecipes({products});
       console.log("🚀 ~ file: page.tsx:23 ~ handleGenerateRecipes ~ recipes:", recipes)

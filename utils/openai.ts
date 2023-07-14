@@ -5,11 +5,11 @@ interface GetRecipesResponse {
     choices: { text: string }[];
 }
 
-const apiKey = process.env.OPENAI_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 const configuration = new Configuration({
-    apiKey: apiKey,
     // apiKey: process.env.OPENAI_API_KEY,
+    apiKey: apiKey,
   });
 const openai = new OpenAIApi(configuration);
 
