@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Meal Wizard',
-  description: '...TODO',
+  description: 'The user can get recipes & nutritional values depending on the products he/she has.',
 }
 
 export default function RootLayout({
