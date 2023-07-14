@@ -5,9 +5,11 @@ interface GetRecipesResponse {
     choices: { text: string }[];
 }
 
-// const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
+const apiKey = process.env.OPENAI_API_KEY;
+const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: apiKey,
+    // apiKey: process.env.OPENAI_API_KEY,
   });
 const openai = new OpenAIApi(configuration);
 
@@ -80,6 +82,7 @@ export async function getRecipes(products: string): Promise<string[]> {
     // return recipes;
   }
   
+  // 
 
 
 
