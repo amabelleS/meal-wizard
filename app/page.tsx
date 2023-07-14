@@ -8,6 +8,16 @@ import { getRecipes } from '@/lib/getRecipes';
 //   recipes: string;
 // }
 
+const Loading = () => (
+  <div className="mt-4 flex items-center">
+    <h2 className="text-2xl font-bold text-teal-400 animate-pulse">Loading...</h2>
+    <svg className="animate-spin h-7 w-7 ml-6 text-teal-400" viewBox="0 0 24 24">
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+    </svg>
+  </div>
+)
+
 export default function Home() {
   const [products, setProducts] = useState('');
   const [recipes, setRecipes] = useState<string>('');
@@ -76,9 +86,10 @@ export default function Home() {
         </div>
       )}
       {loading && (
-        <div className="mt-4">
-          <h2 className="text-2xl font-bold mb-2 text-teal-400">Loading...</h2>
-        </div>
+        // <div className="mt-4">
+        //   <h2 className="text-2xl font-bold mb-2 text-teal-400">Loading...</h2>
+        // </div>
+        <Loading />
       )}
     </div>
   );
