@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="container bg-stone-900 mx-auto p-8">
+    <div className="bg-stone-900 mx-auto p-8 h-full">
       <div className="flex justify-between items-center mt-4 mb-6">
         <h1 className="text-3xl font-bold text-teal-400">Meal Wizard</h1>
         <Image
