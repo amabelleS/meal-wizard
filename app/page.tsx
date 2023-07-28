@@ -4,9 +4,9 @@ import { useState, ChangeEvent } from 'react';
 import Image from 'next/image';
 import { getRecipes } from '@/lib/getRecipes';
 
-// interface RecipeResponse {
-//   recipes: string;
-// }
+interface RecipeResponse {
+  recipes: string;
+}
 
 const Loading = () => (
   <div className="mt-4 flex items-center">
@@ -30,20 +30,27 @@ export default function Home() {
   const handleGenerateRecipes = async () => {
     setLoading(true);
     try {
-      const recipes = await getRecipes(products);
-      console.log("🚀 ~ file: page.tsx:23 ~ handleGenerateRecipes ~ recipes:", recipes)
-      // console.log('test1')
-      // const response = await fetch(`/api/recipes?products=${products}`, {
-      //   method: 'GET',
-      //   // headers: {
-      //   //   'Content-Type': 'application/json',
-      //   // },
-      //   // body: products,
+      // OPTION 1: Use getRecipes function
+      // const recipes = await getRecipes(products);
+      // setRecipes(recipes);
+
+      // OPTION 2: Making a fetch request / GET
+      const response = await fetch(`/api/recipes?products=${products}`, {
+        method: 'GET',
+      });
+
+      // OPTION 3: Making a fetch request / POST
+      // const response = await fetch(`/api/recipes`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: products,
       //   // body: JSON.stringify({ products }),
       // });
-      // console.log("🚀 ~ file: page.tsx:27 ~ handleGenerateRecipes ~ response:", response)
-      // const data: RecipeResponse = await response.json();
-      setRecipes(recipes);
+      
+      const data: RecipeResponse = await response.json();
+      setRecipes(data.recipes);
     } catch (error) {
       console.error('Error:', error);
     }
