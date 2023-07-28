@@ -35,21 +35,22 @@ export default function Home() {
       // setRecipes(recipes);
 
       // OPTION 2: Making a fetch request / GET
-      const response = await fetch(`/api/recipes?products=${products}`, {
-        method: 'GET',
-      });
+      // const response = await fetch(`/api/recipes?products=${products}`, {
+      //   method: 'GET',
+      // });
 
       // OPTION 3: Making a fetch request / POST
-      // const response = await fetch(`/api/recipes`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: products,
-      //   // body: JSON.stringify({ products }),
-      // });
+      const response = await fetch(`/api/recipes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: products,
+        body: JSON.stringify({ products }),
+      });
       
       const data: RecipeResponse = await response.json();
+      console.log("🚀 ~ file: page.tsx:53 ~ handleGenerateRecipes ~ data:", data.recipes)
       setRecipes(data.recipes);
     } catch (error) {
       console.error('Error:', error);

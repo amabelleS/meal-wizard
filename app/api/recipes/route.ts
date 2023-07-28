@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 import { getRecipes } from '@/lib/getRecipes';
 
 export async function GET(request: Request) {
@@ -12,10 +12,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ recipes })
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+    const query = await request.json() // query now contains body
+    // console.log("🚀 ~ file: route.ts:10 ~ POST ~ query:", query)
+    const recipes = await getRecipes(query.products)
+    console.log("🚀 ~ file: route.ts:19 ~ POST ~ recipes:", recipes)
    
-   
-   
-    // return NextResponse.json(data)
+    return NextResponse.json({recipes})
   }
 
