@@ -4,7 +4,7 @@ interface inputProducts {
     products: string;
   }
 
-export async function getRecipes({products}: inputProducts) {
+export async function getRecipes(products: string) {
   const prompt = `Given the following products: ${products}, suggest a few meal options. return Ingredients, nutritional values & Instructions.`;
     //THe cheapest Model?
   const completions = await openai.createChatCompletion({
@@ -23,5 +23,4 @@ export async function getRecipes({products}: inputProducts) {
   });
 
   return completions.data.choices[0].message.content;
-
 }
